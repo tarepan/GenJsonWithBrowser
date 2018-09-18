@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <button id="btn">prepare JSON (クリックしたらダウンロード可能になるよ)</button>
+  <a id="dl" href="" download="char.json">Download JSON</a>
+
+  <script>
+    function attackFile() {
+      const charjson = {
+        "fbLink": {
+          "hostURL": "[Firebase strage Link]",
+          "filePath": "[firebase storage path]"
+        },
+      };
+      const blob = new Blob([JSON.stringify(charjson)], {
+        "type": "application/json"
+      });
+      document.querySelector("#dl").href = window.URL.createObjectURL(blob);
+    }
+    document.querySelector("#btn").addEventListener("click", attackFile);
+  </script>
+</body>
+
+</html>
