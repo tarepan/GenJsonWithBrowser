@@ -2,8 +2,8 @@
 <html>
 
 <body>
-  <button id="btn">prepare JSON (クリックしたらダウンロード可能になるよ)</button>
-  <a id="dl" href="" download="char.json">Download JSON</a>
+  <button id="btn">ダウンロード準備</button>
+  <a id="dl" href="" download="char.json" style="display: none;">Download JSON</a>
 
   <script>
     function attackFile() {
@@ -16,7 +16,9 @@
       const blob = new Blob([JSON.stringify(charjson)], {
         "type": "application/json"
       });
-      document.querySelector("#dl").href = window.URL.createObjectURL(blob);
+      const dlLink = document.querySelector("#dl");
+      dlLink.href = window.URL.createObjectURL(blob);
+      dlLink.setAttribute("style", "");
     }
     document.querySelector("#btn").addEventListener("click", attackFile);
   </script>
